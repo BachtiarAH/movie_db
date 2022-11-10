@@ -1,19 +1,19 @@
 // To parse this JSON data, do
 //
-//     final popularMovie = popularMovieFromJson(jsonString);
+//     final filmPopuler = filmPopulerFromJson(jsonString);
 
 import 'dart:convert';
 
-PopularMovie popularMovieFromJson(String str) => PopularMovie.fromJson(json.decode(str));
+FilmPopuler filmPopulerFromJson(String str) => FilmPopuler.fromJson(json.decode(str));
 
-String popularMovieToJson(PopularMovie data) => json.encode(data.toJson());
+String filmPopulerToJson(FilmPopuler data) => json.encode(data.toJson());
 
-class PopularMovie {
-    PopularMovie({
+class FilmPopuler {
+    FilmPopuler({
         required this.page,
         required this.results,
-        required this.totalPages,
         required this.totalResults,
+        required this.totalPages,
     });
 
     int page;
@@ -21,7 +21,7 @@ class PopularMovie {
     int totalPages;
     int totalResults;
 
-    factory PopularMovie.fromJson(Map<String, dynamic> json) => PopularMovie(
+    factory FilmPopuler.fromJson(Map<String, dynamic> json) => FilmPopuler(
         page: json["page"],
         results: List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
         totalPages: json["total_pages"],
